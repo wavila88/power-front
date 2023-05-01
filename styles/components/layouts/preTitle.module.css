@@ -2,4 +2,18 @@
   background-color: black;
   height: 100%;
   width: 35%;
+  float: left;
 }
+
+.contentInfo{
+  position:relative;
+  color: #ffff;
+  margin: auto;
+  width: 80%;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 40px;
+  top:30%
+  
+}
+

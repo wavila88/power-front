@@ -8,7 +8,7 @@ type PreTitleType ={
 const PreTitle = (props: PreTitleType) => {
   return (
     <div className={styles.preTitleContainer}>
-        {props.content}
+        <div className={styles.contentInfo}>{props.content}</div>
     </div>
   )
 }
