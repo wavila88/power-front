@@ -5,7 +5,7 @@ import { youtubeOpt } from '@/src/utils/home.utils';
 import Router from 'next/router';
 
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 
 
@@ -29,7 +29,7 @@ export default function Home() {
 
       </div>
         <div className={styles.btnContainer}>
-          <Button type='button' className='radius' size='lg' onClick={()=> Router.push('/country')} variant='primary' >Crear poder</Button>
+          <Button type='button' className='radius btn-aling' size='lg' onClick={()=> Router.push('/country')} variant='primary' >Crear poder</Button>
         </div>
 
 

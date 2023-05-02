@@ -1,7 +1,17 @@
 .containerContent{
   padding: 30px;
   float: left;
-  width: 61%;
-  height: 100%;
+  width: 65%;
+  height: 90%;
+}
 
+
+/* Phones  */
+@media screen and (max-width: 1061px) {
+  .containerContent{
+    padding: 30px;
+    float: left;
+    width: 100%;
+    height: 50%;
+  }
 }

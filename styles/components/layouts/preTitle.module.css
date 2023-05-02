@@ -3,6 +3,7 @@
   height: 100%;
   width: 35%;
   float: left;
+
 }
 
 .contentInfo{
@@ -17,3 +18,24 @@
   
 }
 
+
+/* Phones  */
+@media screen and (max-width: 1061px) {
+  .preTitleContainer{
+    background-color: black;
+    height: 25%;
+    width: 100%;
+  }
+
+  .contentInfo{
+    position:relative;
+    color: #ffff;
+    margin: auto;
+    width: 70%;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 20px;
+    top: 15%
+    
+  }
+}

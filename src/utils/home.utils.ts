@@ -17,5 +17,13 @@ export const  countries : CountriesType = [
   {countryId: '5', countryName: 'Argentina'},
   {countryId: '6', countryName: 'Bolivia'},
   {countryId: '7', countryName: 'Mexico'},
+  {countryId: '8', countryName: 'Uruguay'},
+  {countryId: '9', countryName: 'Paraguay'},
+  {countryId: '10', countryName: 'Guatemala'},
+  {countryId: '11', countryName: 'Honduras'},
+  {countryId: '12', countryName: 'El Salvador'},
+  {countryId: '13', countryName: 'Nicaragua'},
+  {countryId: '14', countryName: 'Costa Rica'},
+  {countryId: '15', countryName: 'Venezuela'},
 ]
 

@@ -1,0 +1,29 @@
+.buttonContainer{
+  width: 65%;
+  column-count: 2;  
+  column-gap: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.backContinue{
+  float: right;
+}
+
+
+/* Phones  */
+@media screen and (max-width: 1061px) {
+
+
+  .buttonContainer{
+    width: 100%;
+    column-count: 2;  
+    column-gap: 20px;
+
+  }
+  
+  .backContinue{
+    float: right;
+  }
+  
+}

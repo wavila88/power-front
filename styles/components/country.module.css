@@ -1,4 +1,13 @@
 .countryContainer{
  margin-top: 30%;
+ 
 }
 
+/* Phones  */
+@media screen and (max-width: 1061px) {
+
+  .countryContainer{
+    margin-top: 10%;
+    
+   }
+}
