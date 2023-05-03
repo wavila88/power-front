@@ -25,5 +25,6 @@ export const  countries : CountriesType = [
   {countryId: '13', countryName: 'Nicaragua'},
   {countryId: '14', countryName: 'Costa Rica'},
   {countryId: '15', countryName: 'Venezuela'},
+  {countryId: '16', countryName: 'Panama'},
 ]
 

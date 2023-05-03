@@ -1,6 +1,6 @@
 import { SELECT_COUNTRY } from "../actions/personAction"
 
-const initialState = { country: '' }
+const initialState = { country: 'Colombia' }
 
 const PersonReducer = (state = initialState, action: any) =>{
   switch (action.type) {
