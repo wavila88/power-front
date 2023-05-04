@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import PersonReducer from './reducers/personReducer';
+import PowerReducer from './reducers/powerReducer';
 
 export const store = configureStore({
   reducer: {
-    PersonReducer
+    PowerReducer
   },
 })
 

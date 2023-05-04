@@ -19,6 +19,7 @@ export type CountriesType = Array<{
 
 
 export type GrantersType = {
+  index?: number
   fullName: RegexValidation<string>,
   documentType: RegexValidation<string>,
   documentNumber: RegexValidation<string>

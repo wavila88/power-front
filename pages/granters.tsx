@@ -1,33 +1,38 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import ContainerComponent from "@/src/components/layouts/containerContent";
 import Footer from "@/src/components/layouts/footer";
 import PreTitle from "@/src/components/layouts/preTitle";
+import Button from 'react-bootstrap/Button';
 import { Form } from "react-bootstrap";
 import { GrantersType } from '@/src/types';
-import { FULL_NAME_FEED_BACK, fullNameRegex } from '@/src/utils/validations.utils';
-import { useSelector } from 'react-redux';
-import { documentTypeList } from '@/src/utils/granters.utils';
+import { DOCUMENT_NUMBER_FEED_BACK, FULL_NAME_FEED_BACK, documentNumberRegex, fullNameRegex } from '@/src/utils/validations.utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { documentTypeList, initialStateGranter, setRandomId } from '@/src/utils/granters.utils';
+import { SET_GRANTERS, setAnyState } from '@/src/store/actions/powerAction';
+import FormGranterPower from '@/src/components/formGrantersPower';
+
+
 
 const Granters = () => {
   const content = 'Agrega la persona o personas que otorgaran el poder.';
   const content2 = 'Puede ser una sola persona o varias.';
   const pageNext = '/powerPerson';
   const pageBack = '/country';
-  const country = useSelector<any>(state => state.PersonReducer.country);
+  const dispatch = useDispatch();
+  const country = useSelector<any>(state => state.PowerReducer.country);
+  const allGranters = useSelector<any>(state => state.PowerReducer.granters);
+  
+  
 
-  const [granters, setGranters] = useState<GrantersType>(
-    {
-      fullName: {element: '', isInvalid: false, feedBack:'' },
-      documentType: {element: '', isInvalid: false, feedBack:'' },
-      documentNumber: {element:'', isInvalid: false, feedBack: ''},
-    }
-    );
+  const [granter, setGranter] = useState<GrantersType>(
+    initialStateGranter
+  );
 
   const [validForm, setValidForm] = useState<boolean>(true);
 
   const onChange = (e: any) => {
-     let isInvalid, feedBack;
-    switch(e.target.name){
+    let isInvalid, feedBack;
+    switch (e.target.name) {
       case 'fullName':
         isInvalid = !fullNameRegex.test(e.target.value);
         feedBack = FULL_NAME_FEED_BACK;
@@ -35,21 +40,36 @@ const Granters = () => {
       case 'documentType':
         // isInvalid= !productsNumberRegex.test(e.target.value);
         // feedBack = FEED_BACK_NUMBER_PRODUCTS
-      break;
+        break;
+      case 'documentNumber':
+        isInvalid = !documentNumberRegex.test(e.target.value);
+        feedBack = DOCUMENT_NUMBER_FEED_BACK
+        break;
     }
-    setGranters(
+    setGranter(
       {
-        ...granters,
-          [e.target.name]: {
-            ...[e.target.name],
-            element: e.target.value, 
-            isInvalid, feedBack
-          }
-      
+        ...granter,
+        [e.target.name]: {
+          ...[e.target.name],
+          element: e.target.value,
+          isInvalid, feedBack
+        }
+
       }
     )
     // setArticle({ ...article, [e.target.name]: {...[e.target.name], element: e.target.value, isInvalid, feedBack } });
   };
+
+  const onSubmit = () => {
+   const newGranters= allGranters.concat({
+      index: setRandomId(),
+      fullName: granter.fullName.element,
+      documentType: granter.documentType.element,
+      documentNumber: granter.documentNumber.element,
+    });
+    dispatch(setAnyState(SET_GRANTERS,newGranters));
+    setGranter(initialStateGranter);
+  }
 
   return (
     <>
@@ -61,22 +81,22 @@ const Granters = () => {
             <Form.Control
               type="text"
               name='fullName'
-              isInvalid={granters.fullName.isInvalid}
+              isInvalid={granter.fullName.isInvalid}
               onChange={onChange}
-              value={granters.fullName.element}
-              placeholder="Luis Alberto Jimenez Arevalo" />
+              value={granter.fullName.element}
+              placeholder="Agregar Nombre" />
             <Form.Control.Feedback type='invalid'>
-              {granters.fullName.feedBack}
+              {granter.fullName.feedBack}
             </Form.Control.Feedback>
           </Form.Group>
           <br></br>
           <Form.Group className="col-12">
             <Form.Label htmlFor="documentType">Tipo de documento</Form.Label>
-            <Form.Select id="documentType"  onChange={onChange}>
+            <Form.Select id="documentType" onChange={onChange}>
               <option > seleccionar</option>
-              { country && documentTypeList[country] && documentTypeList[country].map((documentType :any) => (
-                <option value={documentType.name} key={documentType.abreviatura}>{documentType.name}</option> 
-               ))}
+              {country && documentTypeList[country] && documentTypeList[country].map((documentType: any) => (
+                <option value={documentType.name} key={documentType.abreviatura}>{documentType.name}</option>
+              ))}
             </Form.Select>
           </Form.Group>
           <br></br>
@@ -85,15 +105,27 @@ const Granters = () => {
             <Form.Control
               type="text"
               name='documentNumber'
-              isInvalid={granters.documentNumber.isInvalid}
+              isInvalid={granter.documentNumber.isInvalid}
               onChange={onChange}
-              value={granters.documentNumber.element}
+              value={granter.documentNumber.element}
               placeholder='Numero' />
             <Form.Control.Feedback type='invalid'>
-              {granters.documentNumber.feedBack}
+              {granter.documentNumber.feedBack}
             </Form.Control.Feedback>
           </Form.Group>
+          <br></br>
+          <div className='center'>
+            <Button
+              className='radius center'
+              variant="outline-primary"
+              size='sm'
+              onClick={() => onSubmit()}
+            >
+              Agregar Poderdante
+            </Button>
+          </div>
         </Form>
+        <FormGranterPower setHook={setGranter} allGranters={allGranters} />
 
       </ContainerComponent>
       <Footer back={pageBack} continue={pageNext} />

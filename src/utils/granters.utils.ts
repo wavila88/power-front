@@ -299,3 +299,12 @@ export const documentTypeList = {
     },
   ],
 }
+
+
+export const setRandomId = () => Math.floor(Math.random() * 100) + 1;
+
+export const initialStateGranter =  {
+  fullName: { element: '', isInvalid: false, feedBack: '' },
+  documentType: { element: '', isInvalid: false, feedBack: '' },
+  documentNumber: { element: '', isInvalid: false, feedBack: '' },
+}

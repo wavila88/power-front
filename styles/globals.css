@@ -18,6 +18,12 @@ body{
   height: 100%;
 }
 
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 1061px) {
   .radius{
     float: none;

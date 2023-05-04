@@ -1,9 +1,9 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import PreTitle from "@/src/components/layouts/preTitle";
 import Form from 'react-bootstrap/Form';
 import { countries } from "@/src/utils/home.utils";
 import ContainerComponent from "@/src/components/layouts/containerContent";
-import { SELECT_COUNTRY, setAnyState} from '../src/store/actions/personAction';
+import { SELECT_COUNTRY, setAnyState} from '../src/store/actions/powerAction';
 
 
 import styles from '../styles/components/country.module.css';
@@ -14,6 +14,7 @@ const Country = () => {
   const pageNext = '/granters';
   const pageBack = '/';
   const dispatch = useDispatch();
+  const selectedCountry = useSelector<any>(state => state.PowerReducer.country);
 
   return (
     <>
@@ -26,7 +27,7 @@ const Country = () => {
             <Form.Select id="disabledSelect" size='lg' onChange={(e:any) => dispatch(setAnyState(SELECT_COUNTRY,e.target.value))}>
               <option disabled={true}> seleccionar</option>
               {countries.map((country) => (
-                <option value={country.countryName} key={country.countryId}>{country.countryName}</option>
+                <option value={country.countryName} selected={country.countryName === selectedCountry} key={country.countryId}>{country.countryName}</option>
               ))}
             </Form.Select>
           </Form.Group>
