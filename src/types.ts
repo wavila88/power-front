@@ -25,3 +25,5 @@ export type GrantersType = {
   documentNumber: RegexValidation<string>
 };
 
+export type EventTargetType = React.ChangeEvent<HTMLInputElement>
+

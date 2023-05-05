@@ -4,7 +4,7 @@ import Router from 'next/router';
 
 type ContinueType = {
   back: string,
-  continue: string  
+  continue: string | (() => void)   
 }
 
 const Continue = (props: ContinueType) => {
@@ -25,7 +25,13 @@ const Continue = (props: ContinueType) => {
         className='radius' 
         variant="outline-dark" 
         size='lg'
-        onClick={()=> Router.push(props.continue)}
+        onClick={()=>{
+         if(typeof props.continue !== 'string'){
+            props.continue();
+         }else{
+           Router.push(props.continue)
+         } 
+        }}
         >
       Continuar
       </Button>
