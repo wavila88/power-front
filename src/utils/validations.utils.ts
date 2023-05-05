@@ -1,6 +1,8 @@
 
 //PATTERNS
-const FULL_NAME_PATTERN = '(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})'
+
+const WITH_ACCENT = 'a-zA-ZáéíóúüÁÉÍÓÚÜñÑ'
+const FULL_NAME_PATTERN = `(^[${WITH_ACCENT}]{3,16})([ ]{0,1})([${WITH_ACCENT}]{3,16})?([ ]{0,1})?([${WITH_ACCENT}]{3,16})?([ ]{0,1})?([${WITH_ACCENT}]{3,16})`
 
 const DOCUMENT_NUMBER_PATTERN = '^[a-zA-Z0-9?\'"&% ]{3,30}$';
 //VALIDATIONS

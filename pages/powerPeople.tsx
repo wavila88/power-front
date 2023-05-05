@@ -5,21 +5,21 @@ import PreTitle from "@/src/components/layouts/preTitle";
 import { useDispatch, useSelector } from 'react-redux';
 
 import FormGranterPower from '@/src/components/grantersPowers/formGranterPower';
-import { SET_GRANTERS, setAnyState } from "@/src/store/actions/powerAction";
+import { SET_POWER_PEOPLE, setAnyState } from "@/src/store/actions/powerAction";
 
 
 
-const Granters = () => {
-  const content = 'Agrega la persona o personas que otorgaran el poder.';
+const PowerPeople = () => {
+  const content = 'Agrega la persona o personas que recibiran el poder.';
   const content2 = 'Puede ser una sola persona o varias.';
-  const pageNext = '/powerPeople';
-  const pageBack = '/country';
+  const pageNext = '/description';
+  const pageBack = '/granters';
   const dispatch = useDispatch();
 
-  const allGranters = useSelector<any>(state => state.PowerReducer.granters);
+  const allGranters = useSelector<any>(state => state.PowerReducer.powerPeople);
   
-  const setGrantersState = (grantersList:any) => {
-    dispatch(setAnyState(SET_GRANTERS,grantersList))
+  const setPowerState = (powerPeopleList:any) => {
+    dispatch(setAnyState(SET_POWER_PEOPLE,powerPeopleList))
   }
 
 
@@ -27,11 +27,11 @@ const Granters = () => {
     <>
       <PreTitle content={content} content2={content2} />
       <ContainerComponent>
-        <FormGranterPower granterPowerList={allGranters} setUpdateState={setGrantersState}/>
+        <FormGranterPower granterPowerList={allGranters} setUpdateState={setPowerState}/>
       </ContainerComponent>
       <Footer back={pageBack} continue={pageNext} />
     </>
   )
 }
 
-export default Granters;
+export default PowerPeople;

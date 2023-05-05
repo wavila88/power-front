@@ -2,6 +2,10 @@
   border-radius: 40px !important;
 }
 
+.space-left{
+  margin-left: 30px;
+}
+
 .btn-aling {
   float: right;
 }
