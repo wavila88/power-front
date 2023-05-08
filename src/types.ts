@@ -27,3 +27,7 @@ export type GrantersType = {
 
 export type EventTargetType = React.ChangeEvent<HTMLInputElement>
 
+export type AditionalDetailsType = {
+  city: RegexValidation<string>,
+  singDate: RegexValidation<string>
+}

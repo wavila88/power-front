@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import FormGranterPower from '@/src/components/grantersPowers/formGranterPower';
 import { SET_GRANTERS, setAnyState } from "@/src/store/actions/powerAction";
+import Router from "next/router";
 
 
 
@@ -21,7 +22,9 @@ const Granters = () => {
   const setGrantersState = (grantersList:any) => {
     dispatch(setAnyState(SET_GRANTERS,grantersList))
   }
-
+  const nextPage = () => {
+    allGranters.length > 0 && Router.push(pageNext);
+  }
 
   return (
     <>
@@ -29,7 +32,7 @@ const Granters = () => {
       <ContainerComponent>
         <FormGranterPower granterPowerList={allGranters} setUpdateState={setGrantersState}/>
       </ContainerComponent>
-      <Footer back={pageBack} continue={pageNext} />
+      <Footer back={pageBack} continue={nextPage} />
     </>
   )
 }

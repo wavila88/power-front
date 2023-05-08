@@ -1,9 +1,10 @@
-import { SELECT_COUNTRY, SET_GRANTERS, SET_POWER_PEOPLE } from "../actions/powerAction"
+import { SELECT_COUNTRY, SET_GRANTERS, SET_POWER_PEOPLE, SET_DESCRIPTION, SET_DETAILS } from "../actions/powerAction"
 
 const initialState = { 
   country: 'Colombia',
   granters: [],
-  powerPeople: []
+  powerPeople: [],
+  description: ''
 }
 
 const PowerReducer = (state = initialState, action: any) =>{
@@ -14,6 +15,10 @@ const PowerReducer = (state = initialState, action: any) =>{
       return { ...state, granters: action.value}
     case SET_POWER_PEOPLE:
       return { ...state, powerPeople: action.value}
+    case SET_DESCRIPTION:
+      return { ...state, description: action.value}
+    case SET_DETAILS:
+      return { ...state, details: action.value}
   
     default:
       return state
