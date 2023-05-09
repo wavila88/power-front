@@ -10,11 +10,12 @@ import { useState } from "react";
 import {EventTargetType, RegexValidation} from '../src/types';
 import { descriptionRegex } from "@/src/utils/validations.utils";
 import { DESCRIPTION_FEED_BACK } from "@/src/utils/validations.utils";
+import Title from "@/src/components/layouts/title";
 
 
 
 const Summary = () => {
-  const content = 'Entre mas detalles agregues, el documento quedara mejor redactado ';
+  const content = 'Asegurate de que todos los detalles esten listos antes de crear tu poder.';
   const pageNext = '/aditionalDetails';
   const pageBack = '/description';
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const Summary = () => {
     <>
       <PreTitle content={content} />
       <ContainerComponent>
-   
+      <Title>Resumen</Title>
       </ContainerComponent>
       <Footer back={pageBack} continue={pageNext} />
     </>

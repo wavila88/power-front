@@ -8,6 +8,7 @@ import { SELECT_COUNTRY, setAnyState} from '../src/store/actions/powerAction';
 
 import styles from '../styles/components/country.module.css';
 import Footer from "@/src/components/layouts/footer";
+import Title from '@/src/components/layouts/title';
 
 const Country = () => {
   const content = 'Empecemos con la información de tu país';
@@ -20,6 +21,7 @@ const Country = () => {
     <>
       <PreTitle content={content}/>
       <ContainerComponent>
+        <Title>País</Title>
         <div className={styles.countryContainer}>
         <Form>
           <Form.Group className="col-12">

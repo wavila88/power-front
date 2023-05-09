@@ -10,13 +10,14 @@ import { useState } from "react";
 import {EventTargetType, RegexValidation} from '../src/types';
 import { descriptionRegex } from "@/src/utils/validations.utils";
 import { DESCRIPTION_FEED_BACK } from "@/src/utils/validations.utils";
+import Title from "@/src/components/layouts/title";
 
 
 
 const PowerPeople = () => {
   const content = 'Entre mas detalles agregues, el documento quedara mejor redactado ';
   const pageNext = '/aditionalDetails';
-  const pageBack = '/description';
+  const pageBack = '/powerPeople';
   const dispatch = useDispatch();
 
   const [description, setDescription] = useState<RegexValidation<string>>({element: '', isInvalid: false, feedBack: ''})
@@ -44,6 +45,7 @@ const PowerPeople = () => {
     <>
       <PreTitle content={content} />
       <ContainerComponent>
+      <Title>Descripción</Title>
       <br></br>
       <br></br>
        <h3>Agrega descripción para el poder que deseas crear</h3> 

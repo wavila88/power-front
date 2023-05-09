@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FormGranterPower from '@/src/components/grantersPowers/formGranterPower';
 import { SET_POWER_PEOPLE, setAnyState } from "@/src/store/actions/powerAction";
 import Router from "next/router";
+import Title from "@/src/components/layouts/title";
 
 
 
@@ -32,6 +33,7 @@ const PowerPeople = () => {
     <>
       <PreTitle content={content} content2={content2} />
       <ContainerComponent>
+      <Title>Apoderados</Title>
         <FormGranterPower granterPowerList={allGranters} setUpdateState={setPowerState}/>
       </ContainerComponent>
       <Footer back={pageBack} continue={nextPage} />

@@ -10,21 +10,23 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import es from 'date-fns/locale/es'; // importa el idioma español desde date-fns
 
 import "react-datepicker/dist/react-datepicker.css";
-import { DOCUMENT_NUMBER_FEED_BACK, documentNumberRegex } from "@/src/utils/validations.utils";
+import { CREATE_GENERAL_FEED_BACK, DOCUMENT_NUMBER_FEED_BACK, createGeneralRegex, documentNumberRegex } from "@/src/utils/validations.utils";
 import { SET_DETAILS, setAnyState } from "@/src/store/actions/powerAction";
 import Router from "next/router";
+import { formatDate } from "@/src/utils/general.utils";
+import Title from "@/src/components/layouts/title";
 
 registerLocale('es', es);
 
 const AditionalDetails = () => {
-  const content = 'Entre mas detalles agregues, el documento quedara mejor redactado ';
+  const content = 'Dos detalles mas y quedara listo.';
   const pageNext = '/summary';
   const pageBack = '/powerPeople';
   const dispatch = useDispatch();
 
   const [details, setDetails] = useState<AditionalDetailsType>({
     city: {element: '', isInvalid: false ,feedBack: ''},
-    singDate: {element: '', isInvalid: false ,feedBack: ''}
+    singDate: {element: null, isInvalid: false ,feedBack: ''}
   });
 
  const onChange = (e: EventTargetType) => {
@@ -32,8 +34,8 @@ const AditionalDetails = () => {
   
     switch(e?.target?.name){
       case'city':
-        isInvalid = !documentNumberRegex.test(e.target.value);
-        feedBack = DOCUMENT_NUMBER_FEED_BACK;
+        isInvalid = !createGeneralRegex('3','20').test(e.target.value);
+        feedBack = CREATE_GENERAL_FEED_BACK('3','20');
         break;
     }
 
@@ -41,11 +43,11 @@ const AditionalDetails = () => {
  };
   
  const nextPage = () => {
-  if(details.city.element.length > 0 && !details.city.isInvalid 
+  if(details.city.element && !details.city.isInvalid 
     && details.singDate.element && !details.singDate.isInvalid){
       dispatch(setAnyState(SET_DETAILS , {
         city: details.city.element,
-        singDate: details.singDate.element
+        singDate: formatDate(details.singDate.element)
       })),
       Router.push(pageNext);
 
@@ -57,6 +59,9 @@ const AditionalDetails = () => {
     <>
       <PreTitle content={content} />
       <ContainerComponent>
+      <Title>Detalles adicionales</Title>
+      <br></br>
+      <br></br>
       <Form.Group className="col-12">
       <Form.Label htmlFor="fullName">Ciudad en la que se fiirma el poder</Form.Label>
           <Form.Control
