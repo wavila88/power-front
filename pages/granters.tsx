@@ -8,6 +8,7 @@ import FormGranterPower from '@/src/components/grantersPowers/formGranterPower';
 import { SET_GRANTERS, setAnyState } from "@/src/store/actions/powerAction";
 import Router from "next/router";
 import Title from "@/src/components/layouts/title";
+import Head from "next/head";
 
 
 
@@ -19,9 +20,9 @@ const Granters = () => {
   const dispatch = useDispatch();
 
   const allGranters = useSelector<any>(state => state.PowerReducer.granters);
-  
-  const setGrantersState = (grantersList:any) => {
-    dispatch(setAnyState(SET_GRANTERS,grantersList))
+
+  const setGrantersState = (grantersList: any) => {
+    dispatch(setAnyState(SET_GRANTERS, grantersList))
   }
   const nextPage = () => {
     allGranters.length > 0 && Router.push(pageNext);
@@ -29,10 +30,13 @@ const Granters = () => {
 
   return (
     <>
+      <Head>
+        <title>Poderdantes</title>
+      </Head>
       <PreTitle content={content} content2={content2} />
       <ContainerComponent>
-      <Title>Poderdante(s)</Title>
-        <FormGranterPower granterPowerList={allGranters} setUpdateState={setGrantersState}/>
+        <Title>Poderdante(s)</Title>
+        <FormGranterPower granterPowerList={allGranters} setUpdateState={setGrantersState} />
       </ContainerComponent>
       <Footer back={pageBack} continue={nextPage} />
     </>

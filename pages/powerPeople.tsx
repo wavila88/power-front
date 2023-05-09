@@ -8,6 +8,7 @@ import FormGranterPower from '@/src/components/grantersPowers/formGranterPower';
 import { SET_POWER_PEOPLE, setAnyState } from "@/src/store/actions/powerAction";
 import Router from "next/router";
 import Title from "@/src/components/layouts/title";
+import Head from "next/head";
 
 
 
@@ -19,9 +20,9 @@ const PowerPeople = () => {
   const dispatch = useDispatch();
 
   const allGranters = useSelector<any>(state => state.PowerReducer.powerPeople);
-  
-  const setPowerState = (powerPeopleList:any) => {
-    dispatch(setAnyState(SET_POWER_PEOPLE,powerPeopleList))
+
+  const setPowerState = (powerPeopleList: any) => {
+    dispatch(setAnyState(SET_POWER_PEOPLE, powerPeopleList))
   }
 
   const nextPage = () => {
@@ -31,10 +32,13 @@ const PowerPeople = () => {
 
   return (
     <>
+      <Head>
+        <title>Apoderados</title>
+      </Head>
       <PreTitle content={content} content2={content2} />
       <ContainerComponent>
-      <Title>Apoderados</Title>
-        <FormGranterPower granterPowerList={allGranters} setUpdateState={setPowerState}/>
+        <Title>Apoderados</Title>
+        <FormGranterPower granterPowerList={allGranters} setUpdateState={setPowerState} />
       </ContainerComponent>
       <Footer back={pageBack} continue={nextPage} />
     </>

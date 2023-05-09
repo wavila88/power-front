@@ -9,6 +9,7 @@ import { SELECT_COUNTRY, setAnyState} from '../src/store/actions/powerAction';
 import styles from '../styles/components/country.module.css';
 import Footer from "@/src/components/layouts/footer";
 import Title from '@/src/components/layouts/title';
+import Head from 'next/head';
 
 const Country = () => {
   const content = 'Empecemos con la información de tu país';
@@ -19,6 +20,9 @@ const Country = () => {
 
   return (
     <>
+      <Head>
+        <title>País</title>
+      </Head>
       <PreTitle content={content}/>
       <ContainerComponent>
         <Title>País</Title>

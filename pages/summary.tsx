@@ -2,15 +2,11 @@
 import ContainerComponent from "@/src/components/layouts/containerContent";
 import Footer from "@/src/components/layouts/footer";
 import PreTitle from "@/src/components/layouts/preTitle";
-import { useDispatch, useSelector } from 'react-redux';
-import { SET_DESCRIPTION, SET_POWER_PEOPLE, setAnyState } from "@/src/store/actions/powerAction";
-import { Form } from "react-bootstrap";
-import Router from "next/router";
-import { useState } from "react";
-import {EventTargetType, RegexValidation} from '../src/types';
-import { descriptionRegex } from "@/src/utils/validations.utils";
-import { DESCRIPTION_FEED_BACK } from "@/src/utils/validations.utils";
+import { useDispatch } from 'react-redux';
+
 import Title from "@/src/components/layouts/title";
+import Head from "next/head";
+import SummaryDetailed from "@/src/components/sumaryDetailed";
 
 
 
@@ -24,9 +20,14 @@ const Summary = () => {
 
   return (
     <>
+       <Head>
+        <title>Resumen</title>
+      </Head>
       <PreTitle content={content} />
       <ContainerComponent>
-      <Title>Resumen</Title>
+      {/* <Title>Resumen</Title> */}
+
+      <SummaryDetailed/>
       </ContainerComponent>
       <Footer back={pageBack} continue={pageNext} />
     </>
