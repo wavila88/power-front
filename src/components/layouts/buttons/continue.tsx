@@ -4,10 +4,12 @@ import Router from 'next/router';
 
 type ContinueType = {
   back: string,
-  continue: string | (() => void)   
+  continue: string | (() => void),
+  nameContinue?: string  
 }
 
 const Continue = (props: ContinueType) => {
+  const {back, nameContinue = 'Continuar'} = props;
   return (
     <div className={styles.buttonContainer}>
       <div>
@@ -15,7 +17,7 @@ const Continue = (props: ContinueType) => {
           className='radius' 
           variant="outline-dark" 
           size='lg'
-          onClick={()=> Router.push(props.back)}
+          onClick={()=> Router.push(back)}
           >
         Regresar
         </Button>
@@ -33,7 +35,7 @@ const Continue = (props: ContinueType) => {
          } 
         }}
         >
-      Continuar
+      {nameContinue}
       </Button>
     </div>
 

@@ -1,16 +1,14 @@
 
 import ContainerComponent from "@/src/components/layouts/containerContent";
 import Footer from "@/src/components/layouts/footer";
-import PreTitle from "@/src/components/layouts/preTitle";
 import { useDispatch } from 'react-redux';
-
-import Title from "@/src/components/layouts/title";
 import Head from "next/head";
-import SummaryDetailed from "@/src/components/sumaryDetailed";
+import Loading from "@/src/components/loading";
+import PreTitle from "@/src/components/layouts/preTitle";
 
 
 
-const Summary = () => {
+const ReportView = () => {
   const content = 'Asegurate de que todos los detalles esten listos antes de crear tu poder.';
   const pageNext = '/reportView';
   const pageBack = '/description';
@@ -21,17 +19,18 @@ const Summary = () => {
   return (
     <>
        <Head>
-        <title>Resumen</title>
+        <title>Reporte</title>
       </Head>
+      <Loading/>
       <PreTitle content={content} />
       <ContainerComponent>
       {/* <Title>Resumen</Title> */}
 
-      <SummaryDetailed/>
+ 
       </ContainerComponent>
-      <Footer back={pageBack} continue={pageNext} nameContinue={'Crear Reporte'} />
+      <Footer back={pageBack} continue={pageNext}/>
     </>
   )
 }
 
-export default Summary;
+export default ReportView;

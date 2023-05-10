@@ -46,8 +46,8 @@ const SummaryDetailed = () => {
       </div>
       <div className={styles.containerDisplayInfo}>
         {createInfoContainer('Descripción', description)}
-        {createInfoContainer('Ciudad ', details.city)}
-        {createInfoContainer('Fecha Firma', details.singDate)}
+        {createInfoContainer('Ciudad ', details?.city)}
+        {createInfoContainer('Fecha Firma', details?.singDate)}
       </div>
 
     </>)

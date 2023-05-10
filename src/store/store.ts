@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import PowerReducer from './reducers/powerReducer';
+import UtilsReducer from './reducers/utilsReducer'; 
 
 export const store = configureStore({
   reducer: {
-    PowerReducer
+    PowerReducer,
+    UtilsReducer
   },
 })
 
