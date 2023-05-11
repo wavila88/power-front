@@ -32,6 +32,19 @@ body{
   align-items: center;
 }
 
+iframe::-webkit-scrollbar {
+  display: none;
+}
+
+iframe {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.pdfjs { 
+  display: none !important; 
+}
+
 @media screen and (max-width: 1061px) {
   .radius{
     float: none;

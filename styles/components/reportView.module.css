@@ -1,0 +1,27 @@
+.hide{
+  position: absolute;
+  width: 123px;
+  height: 37px;
+  background-color: rgb(50, 54, 57);
+  top: 31px;
+  right: 44px;
+}
+
+@media screen and  (max-height: 556) {
+  .hide{
+    top: 191px;
+  }
+ }
+
+@media screen and ( max-height: 334px ) and (min-width:1535px) {
+  .hide{
+    display: none;
+  }
+ }
+
+ @media screen and (max-width: 1061px) {
+  .hide{
+    top: 32%;
+  }
+ }
+
