@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { GrantersType } from "../../types";
+import React, { useState } from "react";
+import { AppState, GrantersType } from "../../types";
 import { documentTypeList, initialStateGranter, setRandomId } from "../../utils/granters.utils";
 import { DOCUMENT_NUMBER_FEED_BACK, FULL_NAME_FEED_BACK, documentNumberRegex, fullNameRegex } from "../../utils/validations.utils";
 import { useDispatch, useSelector } from "react-redux";
@@ -130,8 +130,12 @@ const FormGranterPower = (props: FormGranPowerType) => {
           <Form.Label htmlFor="documentType">Tipo de documento</Form.Label>
           <Form.Select id="documentType" name='documentType' onChange={onChange}>
             <option > seleccionar</option>
-            {country && documentTypeList[country] && documentTypeList[country].map((documentType: any) => (
-              <option selected={granter.documentType.element === documentType.name} value={documentType.name} key={documentType.abreviatura}>{documentType.name}</option>
+            {typeof country === 'string' && documentTypeList[country as string] && documentTypeList[country as string].map((documentType: any) => (
+              <React.Fragment key={documentType.abreviatura}>
+                <option selected={granter.documentType.element === documentType.name} value={documentType.name}>
+                  {documentType.name}
+                </option>
+              </React.Fragment>
             ))}
           </Form.Select>
         </Form.Group>

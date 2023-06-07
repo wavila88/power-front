@@ -1,58 +1,51 @@
 
+import { useEffect, useState } from 'react'
 import ContainerComponent from "@/src/components/layouts/containerContent";
 import Footer from "@/src/components/layouts/footer";
-import { useEffect, useState } from 'react';
-
-import Head from "next/head";
-import Loading from "@/src/components/loading";
 import PreTitle from "@/src/components/layouts/preTitle";
-import { createReport, report } from "@/src/utils/reportView.utils";
+import { useDispatch, useSelector, useStore } from 'react-redux';
 
-import styles from '../styles/components/reportView.module.css';
+import FormGranterPower from '@/src/components/grantersPowers/formGranterPower';
+import { SET_POWER_PEOPLE, setAnyState } from "@/src/store/actions/powerAction";
+import Router from "next/router";
+import Title from "@/src/components/layouts/title";
+import Head from "next/head";
+import { getReportService } from '@/src/services/createReportService';
+import PDFViewer from '@/src/components/report/PDFViewer';
 
 
 
 
-const ReportView = () => {
-  const content = 'Aqui puedes visualizar tu Poder.';
-  const pageNext = '/payment';
-  const pageBack = '/summary';
+const PowerPeople = () => {
+  const content = 'Realización de pago';
+  const pageNext = '/pay';
+  const pageBack = '/reportView';
+  const dispatch = useDispatch();
 
-  // Create new plugin instance
-  // document.getElementById('pdf-viewer').addEventListener('contextmenu', function (event) {
-  //   event.preventDefault();
-  // });
+  useEffect(() => {
+    setReport()
+  }, [])
+
+  const [base64, setBase64] = useState<any>();
+
+
+  const setReport = async () => {
+    setBase64(await getReportService())
+  }
 
   return (
     <>
       <Head>
-        <style>
-          {`
-            .pdf-object::-webkit-media-controls-enclosure {
-              display: none !important;
-            }
-          `}
-        </style>
+        <title>Reporte</title>
       </Head>
-      {/* <Document file="http://africau.edu/images/default/sample.pdf">
-        <Page pageNumber={1} />
-      </Document> */}
-  
-  
-      <PreTitle content={content}/>
-      
-      
-
+      <PreTitle content={content} />
       <ContainerComponent>
-      <div className={styles.hide}/>
-        <object id="pdf-viewer" data="http://africau.edu/images/default/sample.pdf" type="application/pdf" width="100%" height="100%">
-          <p>Alternative text - include a link <a href="http://africau.edu/images/default/sample.pdf">to the PDF!</a></p>
-        </object>
-      </ContainerComponent>
-      <Footer nameContinue="Descargar Poder" back={pageBack} continue={pageNext}/>
+        {base64 && <PDFViewer base64PDF={base64} />}
 
+      </ContainerComponent>
+      <Footer back={pageBack} continue={pageNext} />
     </>
   )
 }
 
-export default ReportView;
+export default PowerPeople;

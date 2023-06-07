@@ -5,12 +5,12 @@ import AlertMessage from '../alertBanner';
 
 const ContainerComponent = (props: any) => {
 
-  const alertMessages = useSelector(state => state.UtilsReducer.bannerMessages);
+  const alertMessages = useSelector<any>(state => state.UtilsReducer.bannerMessages);
   return (
     <div className={styles.containerContent}>
    
       {
-        alertMessages.length > 0 && alertMessages.map((alert, index) => (
+        (alertMessages as any).length > 0 && (alertMessages as any).map((alert: any, index: any) => (
           <AlertMessage key={index} contentMessage={alert.message} type={alert.type} />
         ))
       }

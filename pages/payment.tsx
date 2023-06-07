@@ -13,10 +13,9 @@ import Head from "next/head";
 
 
 const PowerPeople = () => {
-  const content = 'Agrega la persona o personas que recibiran el poder.';
-  const content2 = 'Puede ser una sola persona o varias.';
-  const pageNext = '/description';
-  const pageBack = '/granters';
+  const content = 'Realización de pago';
+  const pageNext = '';
+  const pageBack = '/reportView';
   const dispatch = useDispatch();
 
   const allGranters = useSelector<any>(state => state.PowerReducer.powerPeople);
@@ -33,12 +32,18 @@ const PowerPeople = () => {
   return (
     <>
       <Head>
-        <title>Apoderados</title>
+        <title>Pago</title>
       </Head>
-      <PreTitle content={content} content2={content2} />
+      <PreTitle content={content} />
       <ContainerComponent>
-        <Title>Apoderados</Title>
-        <FormGranterPower granterPowerList={allGranters} setUpdateState={setPowerState} />
+        <Title>Pago</Title>
+        {/* <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_s-xclick" />
+          <input type="hidden" name="hosted_button_id" value="XY7KRLBMV7TDL" />
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+          <Image   src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif"/>
+        </form> */}
+
       </ContainerComponent>
       <Footer back={pageBack} continue={nextPage} />
     </>

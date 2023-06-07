@@ -31,7 +31,8 @@ const AditionalDetails = () => {
   });
 
   const onChange = (e: EventTargetType) => {
-    let isInvalid, feedBack;
+    let isInvalid = true; 
+    let feedBack = '';
 
     switch (e?.target?.name) {
       case 'city':
@@ -88,7 +89,6 @@ const AditionalDetails = () => {
             name='singDate'
             selected={details.singDate.element}
             onChange={(date: Date | null) => setDetails({ ...details, singDate: { element: date, feedBack: '', isInvalid: false } })}
-            placeholder="Selecciona una fecha"
             locale="es" // define la opción locale en español
             dateFormat="dd/MM/yyyy" // formato de la fecha
             className="form-control"

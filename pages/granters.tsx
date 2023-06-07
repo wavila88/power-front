@@ -25,7 +25,7 @@ const Granters = () => {
     dispatch(setAnyState(SET_GRANTERS, grantersList))
   }
   const nextPage = () => {
-    allGranters.length > 0 && Router.push(pageNext);
+    (allGranters as any).length > 0 && Router.push(pageNext);
   }
 
   return (

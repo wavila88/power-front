@@ -1,6 +1,7 @@
+import { DocumentType } from "../types";
 
 
-export const documentTypeList = {
+export const documentTypeList: Record<string, DocumentType[]> = {
   'Colombia': [
     { 
       abreviatura: 'CC',
