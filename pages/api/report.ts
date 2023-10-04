@@ -96,7 +96,7 @@ const makeRequest = async (query: any) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer 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'
+      Authorization: ''
     }
   };
 

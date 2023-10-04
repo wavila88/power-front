@@ -21,6 +21,7 @@ const PowerPeople = () => {
   const pageNext = '/pay';
   const pageBack = '/reportView';
   const dispatch = useDispatch();
+  const powerReducer = useSelector<any>(state => state.PowerReducer);
 
   useEffect(() => {
     setReport()
@@ -30,7 +31,7 @@ const PowerPeople = () => {
 
 
   const setReport = async () => {
-    setBase64(await getReportService())
+    setBase64(await getReportService(powerReducer))
   }
 
   return (
@@ -43,7 +44,6 @@ const PowerPeople = () => {
         {base64 && <PDFViewer base64PDF={base64} />}
 
       </ContainerComponent>
-      <Footer back={pageBack} continue={pageNext} />
     </>
   )
 }

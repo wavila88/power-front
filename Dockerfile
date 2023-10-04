@@ -25,3 +25,6 @@ CMD ["npm", "start"]
 
 # docker build -t power-law-next .
 # docker run -p 3000:3000 power-law-next:latest
+# subir imagen a heroku 
+# heroku container:push web -a power-front-version
+# heroku container:release web -a power-front-version
