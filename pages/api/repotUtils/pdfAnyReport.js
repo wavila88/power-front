@@ -7,9 +7,9 @@ const iterateGranters = (grantersRep) => {
       `<div class='iterate-div'>
     <div class='text-content'>__________________________________</div>
     <br/>
-    <div class='text-content'><strong>Nombre: </strong>${element.name}</div>
-    <div class='text-content'><strong>Tipo documento: </strong> ${element.idType}</div>
-    <div class='text-content'><strong>Numero documento: </strong> ${element.idNumber}</div>
+    <div class='text-content'><strong>Nombre: </strong>${element.fullName}</div>
+    <div class='text-content'><strong>Tipo documento: </strong> ${element.documentType}</div>
+    <div class='text-content'><strong>Numero documento: </strong> ${element.documentNumber}</div>
 </div>`
   });
 

@@ -41,7 +41,7 @@ const PowerPeople = () => {
       </Head>
       <PreTitle content={content} />
       <ContainerComponent>
-        {base64 && <PDFViewer base64PDF={base64} />}
+        {base64 ? <PDFViewer base64PDF={base64} />: <center className='margin-top'><h1>Cargando Poder ...</h1></center>}
 
       </ContainerComponent>
     </>

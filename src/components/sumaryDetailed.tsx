@@ -11,9 +11,9 @@ const SummaryDetailed = () => {
 
 
   const iterateGranterPowers = (grantersPower: Array<any>): JSX.Element =>
-    granters && (granters as any).map((granter: any, index: any) => (
+  grantersPower && (grantersPower as any).map((granter: any, index: any) => (
       <div key={index}>
-        <h5>Poderdante {index + 1}</h5>
+        <h5>Actor {index + 1}</h5>
         <ul>
           <li><strong>Nombre:</strong> {granter.fullName}</li>
           <li><strong>Tipo Documento:</strong> {granter.documentType}</li>

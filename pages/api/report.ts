@@ -36,10 +36,10 @@ export default async function handler(
 
   const query = rentHouse(
     {
-      description: description,
-      ubication: ubication,
-      granters: granters,
-      lawRepresentatives: lawRepresentatives
+      description: req.body.description,
+      ubication: req.body.details.city,
+      granters: req.body.granters,
+      lawRepresentatives: req.body.powerPeople
     });
 
 
@@ -52,10 +52,10 @@ export default async function handler(
 
    const report = await createPDFReport({
       powerDetails: powerDetails,
-      city: city,
-      date: date,
-      granters: granters,
-      lawRepresentatives: lawRepresentatives
+      city: req.body.details.city,
+      date: req.body.details.singDate,
+      granters: req.body.granters,
+      lawRepresentatives: req.body.powerPeople
     })
    
   res.status(200).json({response: report})
